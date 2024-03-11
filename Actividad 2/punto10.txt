@@ -1,0 +1,78 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        const double IVA = 0.16;
+        double totalCorrientes = 0;
+        double totalRecomendados = 0;
+        double totalLocal = 0;
+        double totalNacional = 0;
+        double totalInternacional = 0;
+
+        while (true)
+        {
+            Console.WriteLine("¿Desea realizar un envío? (si/no): ");
+            string respuesta = Console.ReadLine().ToLower();
+
+            if (respuesta != "si")
+                break;
+
+            Console.WriteLine("Ingrese el peso de la carta en gramos: ");
+            int peso = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Ingrese el tipo de envío (corriente/recomendado): ");
+            string tipoEnvio = Console.ReadLine().ToLower();
+
+            Console.WriteLine("Ingrese el destino (local/nacional/internacional): ");
+            string destino = Console.ReadLine().ToLower();
+
+            double tarifaBase = 0;
+
+            switch (destino)
+            {
+                case "local":
+                    tarifaBase = tipoEnvio == "corriente" ? 100 : 150;
+                    totalLocal += tarifaBase;
+                    break;
+                case "nacional":
+                    tarifaBase = tipoEnvio == "corriente" ? 150 : 300;
+                    totalNacional += tarifaBase;
+                    break;
+                case "internacional":
+                    tarifaBase = tipoEnvio == "corriente" ? 200 : 400;
+                    totalInternacional += tarifaBase;
+                    break;
+                default:
+                    Console.WriteLine("Destino no válido.");
+                    continue;
+            }
+
+            double valorEnvio = peso * 0.1 + tarifaBase;
+            double valorFinal = valorEnvio * (1 + IVA);
+
+            if (tipoEnvio == "corriente")
+            {
+                totalCorrientes += valorFinal;
+            }
+            else if (tipoEnvio == "recomendado")
+            {
+                totalRecomendados += valorFinal;
+            }
+            else
+            {
+                Console.WriteLine("Tipo de envío no válido.");
+                continue;
+            }
+
+            Console.WriteLine($"Valor a pagar por el envío: {valorFinal:C}");
+        }
+
+        Console.WriteLine($"Total recaudado en envíos corrientes: {totalCorrientes:C}");
+        Console.WriteLine($"Total recaudado en envíos recomendados: {totalRecomendados:C}");
+        Console.WriteLine($"Total recaudado en envíos locales: {totalLocal:C}");
+        Console.WriteLine($"Total recaudado en envíos nacionales: {totalNacional:C}");
+        Console.WriteLine($"Total recaudado en envíos internacionales: {totalInternacional:C}");
+    }
+}
