@@ -1,0 +1,39 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int clientesConDescuento = 0;
+        double totalIngresos = 0;
+
+        for (int i = 0; i < 15; i++)
+        {
+            Console.WriteLine($"Cliente {i + 1}");
+            Console.WriteLine("Digite la cantidad de kilos comprados: ");
+            int kilosComprados = Convert.ToInt32(Console.ReadLine());
+
+            if (kilosComprados > 10)
+            {
+                double descuento = kilosComprados * 0.15;
+                double costoConDescuento = kilosComprados - descuento;
+
+                Console.WriteLine($"Descuento aplicado: {descuento:C}");
+                Console.WriteLine($"Total a pagar con descuento: {costoConDescuento:C}");
+
+                clientesConDescuento++;
+                totalIngresos += costoConDescuento;
+            }
+            else
+            {
+                Console.WriteLine($"Total a pagar: {kilosComprados:C}");
+                totalIngresos += kilosComprados;
+            }
+
+            Console.WriteLine();
+        }
+
+        Console.WriteLine($"Clientes con descuento: {clientesConDescuento}");
+        Console.WriteLine($"Ingresos totales: {totalIngresos:C}");
+    }
+}

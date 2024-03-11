@@ -1,0 +1,27 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int totalAutomoviles = 25;
+        int[] puntosContaminantes = new int[totalAutomoviles];
+
+        int sumaPuntos = 0;
+
+        for (int i = 0; i < totalAutomoviles; i++)
+        {
+            Console.WriteLine($"Ingrese los puntos contaminantes del automóvil {i + 1}: ");
+            puntosContaminantes[i] = Convert.ToInt32(Console.ReadLine());
+            sumaPuntos += puntosContaminantes[i];
+        }
+
+        double promedioPuntos = (double)sumaPuntos / totalAutomoviles;
+        int minContaminacion = puntosContaminantes.Min();
+        int maxContaminacion = puntosContaminantes.Max();
+
+        Console.WriteLine($"Promedio de puntos contaminantes: {promedioPuntos}");
+        Console.WriteLine($"Automóvil con menos contaminación: {minContaminacion}");
+        Console.WriteLine($"Automóvil con más contaminación: {maxContaminacion}");
+    }
+}

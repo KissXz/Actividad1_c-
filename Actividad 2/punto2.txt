@@ -1,0 +1,64 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int totalNiños = 0;
+        int totalJovenes = 0;
+        int totalAdultos = 0;
+        int totalViejos = 0;
+
+        int contNiños = 0;
+        int contJovenes = 0;
+        int contAdultos = 0;
+        int contViejos = 0;
+
+        for (int i = 0; i < 10; i++)
+        {
+            Console.WriteLine("Digite su edad: ");
+            int edad = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Digite su peso: ");
+            int peso = Convert.ToInt32(Console.ReadLine());
+
+            if (edad >= 0 && edad <= 12)
+            {
+                totalNiños += peso;
+                contNiños++;
+            }
+            else if (edad > 12 && edad <= 29)
+            {
+                totalJovenes += peso;
+                contJovenes++;
+            }
+            else if (edad > 29 && edad <= 59)
+            {
+                totalAdultos += peso;
+                contAdultos++;
+            }
+            else if (edad >= 60)
+            {
+                totalViejos += peso;
+                contViejos++;
+            }
+            else
+            {
+                Console.WriteLine("Digite una edad válida");
+            }
+        }
+
+        double promNiños = totalNiños / contNiños;
+        double promJovenes = totalJovenes / contJovenes ;
+        double promAdultos = totalAdultos / contAdultos ;
+        double promViejos = totalViejos / contViejos ;
+
+        Console.WriteLine($"Promedio de peso de Niños: {promNiños}");
+        Console.WriteLine($"Promedio de peso de Jovenes: {promJovenes}");
+        Console.WriteLine($"Promedio de peso de Adultos: {promAdultos}");
+        Console.WriteLine($"Promedio de peso de Viejos: {promViejos}");
+    }
+}
+
+
+

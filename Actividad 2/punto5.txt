@@ -1,0 +1,59 @@
+using System;
+
+class Actividad2
+{
+    static void Main()
+    {
+        int elefantes = 20;
+        int jirafas = 15;
+        int chimpances = 40;
+
+        Console.WriteLine("Seleccione el tipo de animal (elefante, jirafa, chimpancé): ");
+        string tipoAnimal = Console.ReadLine().ToLower();
+
+        int muestra = 0;
+        int jovenes = 0;
+        int adultos = 0;
+        int viejos = 0;
+
+        switch (tipoAnimal)
+        {
+            case "elefante":
+                muestra = elefantes;
+                break;
+            case "jirafa":
+                muestra = jirafas;
+                break;
+            case "chimpancé":
+                muestra = chimpances;
+                break;
+            default:
+                Console.WriteLine("Tipo de animal no válido.");
+                return;
+        }
+
+        for (int i = 0; i < muestra; i++)
+        {
+            Console.WriteLine($"Ingrese la edad del {tipoAnimal} {i + 1}: ");
+            int edad = Convert.ToInt32(Console.ReadLine());
+
+            if (edad >= 0 && edad <= 1)
+                jovenes++;
+            else if (edad > 1 && edad < 3)
+                adultos++;
+            else if (edad >= 3)
+                viejos++;
+            else
+                Console.WriteLine("Edad no válida.");
+        }
+
+        double porcentajeJovenes = (double)jovenes / muestra * 100;
+        double porcentajeAdultos = (double)adultos / muestra * 100;
+        double porcentajeViejos = (double)viejos / muestra * 100;
+
+        Console.WriteLine($"Porcentaje de {tipoAnimal}s jóvenes: {porcentajeJovenes}%");
+        Console.WriteLine($"Porcentaje de {tipoAnimal}s adultos: {porcentajeAdultos}%");
+        Console.WriteLine($"Porcentaje de {tipoAnimal}s viejos: {porcentajeViejos}%");
+    }
+}
+

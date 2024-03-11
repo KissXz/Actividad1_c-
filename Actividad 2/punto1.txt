@@ -1,0 +1,56 @@
+int candidato1 = 0;
+int candidato2 = 0;
+int candidato3 = 0;
+
+
+for (int i = 1; i < 10; i++)
+{
+    Console.WriteLine("Digite su voto: \n" +
+        "Digite 1: Candidato 1 \n" +
+        "Digite 2: Candidato 2 \n" +
+        "Digite 3: Candidato 3 \n");
+    int voto = Convert.ToInt32(Console.ReadLine());
+
+    if (voto == 1)
+    {
+        Console.WriteLine("Haz votado por el candidato 1!\n");
+        candidato1++;
+
+    }else if(voto == 2){
+        Console.WriteLine("Haz votado por el candidato 2! \n");
+        candidato2++;
+    }   
+    else if(voto == 3)
+    {
+        Console.WriteLine("Haz votado por el candidato 3! \n");
+        candidato3++;
+    }
+    else
+    {
+        Console.WriteLine("Digite un candidato valido \n");
+    }
+}
+
+    int mayorVotos = Math.Max(candidato1, Math.Max(candidato2, candidato3));
+
+    if (mayorVotos == candidato1)
+        {
+            Console.WriteLine("El candidato 1 tiene el mayor número de votos.\n");
+        }
+        else if (mayorVotos == candidato2)
+        {
+            Console.WriteLine("El candidato 2 tiene el mayor número de votos.\n");
+        }
+        else if (mayorVotos == candidato3)
+        {
+            Console.WriteLine("El candidato 3 tiene el mayor número de votos.\n");
+        }
+        else
+        {
+            Console.WriteLine("Hay un empate o algún error en los votos.\n");
+        }
+
+        Console.WriteLine("Los resultados son los siguientes: \n" +
+        "Candidato 1: " + candidato1 + "\n" +
+        "Candidato 2: " + candidato2 + "\n" +
+        "Candidato 3: " + candidato3 + "\n");

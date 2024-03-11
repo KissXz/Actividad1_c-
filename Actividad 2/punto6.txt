@@ -1,0 +1,54 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        while (true)
+        {
+            Console.WriteLine("Ingrese el último dígito de la placa del automóvil (o ingrese 's' para salir): ");
+            string input = Console.ReadLine();
+
+            if (input.ToLower() == "s")
+                break;
+
+            if (int.TryParse(input, out int ultimoDigito))
+            {
+                string colorCalcomania = "";
+
+                switch (ultimoDigito)
+                {
+                    case 1:
+                    case 2:
+                        colorCalcomania = "amarilla";
+                        break;
+                    case 3:
+                    case 4:
+                        colorCalcomania = "rosa";
+                        break;
+                    case 5:
+                    case 6:
+                        colorCalcomania = "roja";
+                        break;
+                    case 7:
+                    case 8:
+                        colorCalcomania = "verde";
+                        break;
+                    case 9:
+                    case 0:
+                        colorCalcomania = "azul";
+                        break;
+                    default:
+                        Console.WriteLine("Dígito no válido.");
+                        continue;
+                }
+
+                Console.WriteLine($"El automóvil con calcomanía {colorCalcomania} puede ingresar a la ciudad.");
+            }
+            else
+            {
+                Console.WriteLine("Entrada no válida. Por favor, ingrese un número del 0 al 9 o 's' para salir.");
+            }
+        }
+    }
+}
